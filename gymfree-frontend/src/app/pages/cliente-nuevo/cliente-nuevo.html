@@ -1,0 +1,29 @@
+<div class="container">
+  <h4 class="center-align">Registrar Nuevo Cliente</h4>
+
+  <form (ngSubmit)="guardar()" class="col s12">
+    <div class="input-field">
+      <input type="text" [(ngModel)]="cliente.nombre" name="nombre" required />
+      <label for="nombre">Nombre</label>
+    </div>
+
+    <div class="input-field">
+      <input type="email" [(ngModel)]="cliente.correo" name="correo" required />
+      <label for="correo">Correo</label>
+    </div>
+
+    <div class="input-field">
+      <input type="text" [(ngModel)]="cliente.telefono" name="telefono" required />
+      <label for="telefono">Teléfono</label>
+    </div>
+
+    <div class="right-align">
+      <button class="btn green" type="submit">
+        <i class="material-icons left">save</i>Guardar
+      </button>
+      <a class="btn grey" routerLink="/clientes">
+        <i class="material-icons left">arrow_back</i>Cancelar
+      </a>
+    </div>
+  </form>
+</div>
