@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-clases',
-  imports: [],
+  standalone: true,
+  imports: [RouterLink],
   templateUrl: './clases.html',
-  styleUrl: './clases.css',
+  styleUrls: ['./clases.css'], // ← CORREGIDO: plural y arreglo
 })
-export class Clases {
-
-}
+export class Clases {}

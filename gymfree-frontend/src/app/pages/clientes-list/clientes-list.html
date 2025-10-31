@@ -3,7 +3,7 @@
 
   <div class="right-align">
     <a class="btn green" routerLink="/clientes/nuevo">
-      <i class="material-icons left">person_add</i>Nuevo Cliente
+      <i class="material-icons left">Adicionar</i>Nuevo Cliente
     </a>
   </div>
 
@@ -23,10 +23,10 @@
         <td>{{ cliente.telefono }}</td>
         <td>
           <a class="btn-small blue" [routerLink]="['/clientes/editar', cliente._id]">
-            <i class="material-icons">edit</i>
+            <i class="material-icons">editar</i>
           </a>
           <button class="btn-small red" (click)="eliminar(cliente._id)">
-            <i class="material-icons">delete</i>
+            <i class="material-icons">Borrar</i>
           </button>
         </td>
       </tr>

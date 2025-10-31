@@ -4,11 +4,12 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { ClienteService } from '../../services/cliente.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-cliente-nuevo',
   standalone: true,
-  imports: [CommonModule, FormsModule, HttpClientModule],
+  imports: [CommonModule, FormsModule, HttpClientModule, RouterLink],
   providers: [ClienteService],
   templateUrl: './cliente-nuevo.html',
   styleUrls: ['./cliente-nuevo.css'],

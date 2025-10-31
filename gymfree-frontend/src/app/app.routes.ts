@@ -5,6 +5,7 @@ import { Clases } from './pages/clases/clases';
 import { Planes } from './pages/planes/planes';
 import { Contacto } from './pages/contacto/contacto';
 
+
 import { ClientesList } from './pages/clientes-list/clientes-list';
 import { ClienteNuevo } from './pages/cliente-nuevo/cliente-nuevo';
 import { ClienteEditar } from './pages/cliente-editar/cliente-editar';

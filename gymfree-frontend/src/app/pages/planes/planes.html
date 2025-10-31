@@ -1,12 +1,113 @@
-<div class="container">
-  <h4>Planes</h4>
-  <div class="card-panel teal lighten-4">
-    <strong>Diario:</strong> $10.000 COP
+<!-- Título -->
+  <div class="container section">
+    <h2 class="center-align">Elige tu Plan</h2>
+    <p class="center-align grey-text">Encuentra el plan que se adapta a tu estilo de vida y objetivos.</p>
   </div>
-  <div class="card-panel teal lighten-3">
-    <strong>Mensual:</strong> $80.000 COP
+
+  <!-- Tarjetas de planes -->
+  <div class="container">
+    <div class="row">
+
+      <!-- Plan Básico -->
+      <div class="col s12 m4">
+        <div class="card hoverable">
+          <div class="card-content center-align">
+            <span class="card-title">Plan Básico</span>
+            <h5>$80.000 / mes</h5>
+            <ul class="grey-text text-darken-2">
+              <li>✅ Acceso ilimitado al gimnasio</li>
+              <li>✅ 1 clase grupal semanal</li>
+              <li>✅ Evaluación física inicial</li>
+            </ul>
+          </div>
+          <div class="card-action center-align">
+            
+            <!--a class="btn amber darken-2 modal-trigger" href="#modal-inscripcion">Inscribirme</a>-->
+            <a class="btn amber darken-2 modal-trigger" href="/clientes">Inscribirme</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Plan Pro -->
+      <div class="col s12 m4">
+        <div class="card hoverable">
+          <div class="card-content center-align">
+            <span class="card-title">Plan Pro</span>
+            <h5>$120.000 / mes</h5>
+            <ul class="grey-text text-darken-2">
+              <li>✅ Todo lo del Plan Básico</li>
+              <li>✅ 3 clases grupales semanales</li>
+              <li>✅ Acceso a zona de relax</li>
+            </ul>
+          </div>
+          <div class="card-action center-align">
+           <!--a class="btn amber darken-2 modal-trigger" href="#modal-inscripcion">Inscribirme</a>-->
+             <a class="btn amber darken-2 modal-trigger" href="/clientes">Inscribirme</a>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Plan Elite -->
+      <div class="col s12 m4">
+        <div class="card hoverable">
+          <div class="card-content center-align">
+            <span class="card-title">Plan Elite</span>
+            <h5>$180.000 / mes</h5>
+            <ul class="grey-text text-darken-2">
+              <li>✅ Todo lo del Plan Pro</li>
+              <li>✅ Entrenador personal</li>
+              <li>✅ Nutricionista mensual</li>
+              <li>✅ Acceso a zonas humedas</li>
+            </ul>
+          </div>
+          <div class="card-action center-align">
+             <a class="btn amber darken-2 modal-trigger" href="/clientes">Inscribirme</a>
+
+           <!-- <a class="btn amber darken-2 modal-trigger" href="#modal-inscripcion">Inscribirme</a> -->
+          </div>
+        </div>
+      </div>
+
+    </div>
   </div>
-  <div class="card-panel teal lighten-2">
-    <strong>Trimestral:</strong> $220.000 COP
+
+  <!-- seccion de inscripcion -->
+   <!-- Modal de inscripción -->
+<div id="modal-inscripcion" class="modal">
+  <div class="modal-content">
+    <h4>Formulario de Inscripción</h4>
+    <p>Completa tus datos para registrarte en el plan seleccionado.</p>
+
+    <form>
+      <div class="input-field">
+        <input id="nombre" type="text" class="validate" required>
+        <label for="nombre">Nombre completo</label>
+      </div>
+
+      <div class="input-field">
+        <input id="correo" type="email" class="validate" required>
+        <label for="correo">Correo electrónico</label>
+      </div>
+
+      <div class="input-field">
+        <input id="telefono" type="tel" class="validate" required>
+        <label for="telefono">Teléfono</label>
+      </div>
+
+      <div class="input-field">
+        <select id="plan">
+          <option value="" disabled selected>Elige tu plan</option>
+          <option value="basico">Plan Básico</option>
+          <option value="pro">Plan Pro</option>
+          <option value="elite">Plan Elite</option>
+        </select>
+        <label for="plan">Tipo de Plan</label>
+      </div>
+
+      <div class="center-align">
+        <button class="btn amber darken-2 waves-effect waves-light" type="submit">Enviar</button>
+      </div>
+    </form>
   </div>
 </div>
