@@ -1,0 +1,255 @@
+
+
+
+
+
+
+BIENVENIDOS A GYM FREE WEB
+
+ GymFreeWeb – Documentación del Proyecto
+Versión: 2.0
+Autor: Ruben alfredo pulido  Oscar Ivan Viveros Peña 
+
+Fecha de entrega: Noviembre 2025
+Tecnologías: Angular 20 standalone · Express · MongoDB Atlas  · node.js · HTML/CSS puro · Materialize
+ Descripción
+GymFreeWeb es una aplicación web modular y reversible que permite a los usuarios hacer una inscripcion en lapagina de "inscripcion" donde se puede probar el crud completo con la base de datos El proyecto fue construido con enfoque quirúrgico, evitando dependencias innecesarias y priorizando la claridad visual, la autonomía técnica digital.
+En este apartado entregamos las instrucciones básicas para su puesta en marcha y utilización de este producto desde el localhost, 
+
+como primera instrucción debe montarse en el editor de texto Visual Studio Code
+
+
+
+
+Directorio: D:\GymFreeWebFinal
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        30/10/2025      6:26                gymfree-backend
+d-----        30/10/2025      6:33                gymfree-frontend
+
+como podras observar existen dos carpetas separadas que contienen el backend y el frontend de la aplicación, son dos proyectos separados pero comunicados
+
+
+en una terminal abierta en VSC ubicarse dentro de cada proyecto y ejecutar en la terminal por cada proyecto el siguiente comando
+
+
+
+
+PS D:\GymFreeWebFinal\gymfree-frontend> npm install
+
+PS D:\GymFreeWebFinal\gymfree-backend> npm install
+
+
+ESTO INSTALA LOS ARCHIVOS NECESARIOS PARA INCLUIR LAS BILIOTECAS DE NODE Y LEVANTAR LOS SERVICIOS
+
+POSTERIORMENTE 
+
+usa estos comandos
+PS D:\GymFreeWebFinal\gymfree-backend> node index.js
+
+PS D:\GymFreeWebFinal\gymfree-frontend> ng serve
+
+por si algún problema la base de datos esta alojada en mongodb atlas y usa esta conexión
+que se incorpora en en la variable como va a continuación
+mongoose.connect('mongodb+srv://rubenpulido1975_db_user:nomercy1975@sena.dhckkxb.mongodb.net/gymfree?retryWrites=true&w=majority&appName=sena')
+EXPLICACION:
+mongoose.connect('mongodb+srv://[USUARIO DE BD]:[db_password]@[cluster].dhckkxb.mongodb.net/[nombre de la bd]?retryWrites=true&w=majority&appName=sena')
+
+ADVERTENCIA REPITO TODO ESTO SE EJECUTA EN LOCALHOST
+
+a continuación se explican los cambios para implementar la apertura de los puertos y que permita la conexión dentro de dispositivos locales de la misma red LAN
+
+
+
+////CRUD COMPLETO Y CRUD PARCIAL////
+
+tiene funcionalidades implementadas en dos paginas del site:
+Pagina inscripcion --> http://localhost:4200/clientes
+Funcionalidades implementadas
+Lectura y visualización
+• 	Consulta dinámica de clientes desde MongoDB usando 
+• 	Renderizado en lista o tabla con 
+• 	Visualización clara de cada cliente con sus datos completos
+• 	Formato de fecha y estilo visual con Materialize
+
+Eliminación de clientes
+• 	Botón “Eliminar” junto a cada cliente
+• 	Petición  al backend
+• 	Eliminación visual inmediata en el frontend
+• 	Confirmación visual opcional antes de borrar
+
+Pagina http://localhost:4200/clientes/nuevo
+Funcionalidades implementadas
+ Creación de clientes
+• 	Formulario para registrar nuevos clientes con campos como nombre, correo, teléfono, etc.
+• 	Enlace bidireccional con  para capturar datos
+• 	Envío de datos al backend vía  usando 
+• 	Validación estructural del modelo antes de guardar
+http://localhost:4200/clientes/editar/
+Funcionalidades implementadas
+ Actualización de clientes
+- Botón “Editar” junto a cada cliente
+- Carga de datos en formulario para modificar
+- Envío de cambios al backend vía PUT /api/clientes/:id
+- Actualización inmediata en la interfaz sin recarga
+
+
+http://localhost:4200/contacto --> http://localhost:4200/mensajes
+Funcionalidades implementadas
+- Envío de mensajes desde formulario
+- Consulta de mensajes guardados
+- Eliminación dinámica con botón “Borrar”
+- Navegación entre páginas
+- Estilos visuales con Materialize
+- Validación estructural y reversibilidad
+
+
+
+
+//////  PARA ADAPTAR A RED LOCAL SE DEBE MODIFICAR DOS ARCHIVOS index.js y cliente.service.ts
+
+A CONTINUACION EL CONTENIDO ORIGINAL
+
+<////////    codigo index.js original no borrar//////////>
+
+const express = require('express');
+const mongoose = require('mongoose');
+const cors = require('cors');
+const clientesRoutes = require('./routes/clientes');
+
+const app = express();
+const PORT = 4000;
+
+app.use(cors());
+app.use(express.json());
+app.use('/api/clientes', clientesRoutes);
+
+mongoose.connect('mongodb+srv://rubenpulido1975_db_user:nomercy1975@sena.dhckkxb.mongodb.net/gymfree?retryWrites=true&w=majority&appName=sena')
+  .then(() => {
+    console.log('Conectado a MongoDB Atlas');
+    app.listen(PORT, () => {
+      console.log(`Servidor corriendo en http://localhost:${PORT}`);
+    });
+  })
+  .catch(err => console.error('Error de conexión:', err));
+
+
+  ////// codigo original cliente.service.ts/////
+
+  import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
+@Injectable()
+export class ClienteService {
+  private baseUrl = 'http://localhost:4000/api/clientes';
+ 
+  constructor(private http: HttpClient) {}
+
+  getClientes(): Observable<any[]> {
+    return this.http.get<any[]>(this.baseUrl);
+  }
+
+  crearCliente(cliente: any): Observable<any> {
+    return this.http.post(this.baseUrl, cliente);
+  }
+
+  actualizarCliente(id: string, cliente: any): Observable<any> {
+    return this.http.put(`${this.baseUrl}/${id}`, cliente);
+  }
+
+  eliminarCliente(id: string): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/${id}`);
+  }
+
+  getCliente(id: string): Observable<any> {
+    return this.http.get(`${this.baseUrl}/${id}`);
+  }
+}
+
+
+/// PARA ACCESO A RED LOCAL CON EL MOVIL///
+/// ARCHIVO INDEX.JS CON IP CON ACEPTACION de interfaces de red////
+
+/// CONTENIDO MODIFICADO INDEX.JS  EN BACKEND/////
+
+
+const express = require('express');
+const mongoose = require('mongoose');
+const cors = require('cors');
+const clientesRoutes = require('./routes/clientes');
+
+const app = express();
+const PORT = 4000;
+const HOST = '0.0.0.0'; // <----- ¡MODIFICACIÓN CLAVE! Esto permite escuchar en todas las interfaces de red
+
+app.use(cors());
+app.use(express.json());
+app.use('/api/clientes', clientesRoutes);
+
+mongoose.connect('mongodb+srv://rubenpulido1975_db_user:nomercy1975@sena.dhckkxb.mongodb.net/gymfree?retryWrites=true&w=majority&appName=sena')
+.then(() => {
+console.log('Conectado a MongoDB Atlas');
+ // ----------------------------------------------------
+// MODIFICACIÓN EN app.listen()
+// ----------------------------------------------------
+app.listen(PORT, HOST, () => { //  <-----Se añade 'HOST' como segundo argumento
+ console.log(`Servidor corriendo en http://${HOST}:${PORT}`); 
+// Opcional: Puedes cambiar el mensaje para que muestre la IP local si la conoces
+      console.log(`Ahora accesible desde tu red interna en tu IP local:${PORT}`); 
+    });
+  })
+  .catch(err => console.error('Error de conexión:', err));
+
+
+////// CONTENIDO MODIFICADO CLIENTE.SERVICE.TS EN FRONTEND /////
+
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
+@Injectable()
+export class ClienteService {
+  //private baseUrl = 'http://localhost:4000/api/clientes'; ///  <-----NOTE LA DIFERENCIA EN //ESTA LINEA CON LA QUE NO ESTA COMENTADA, LA IP CORRESPONDE ALA DIRECCION LOCAL QUE ENTREGUE //IPCONFIG
+
+ private baseUrl = 'http://192.168.10.5:4000/api/clientes';
+
+  constructor(private http: HttpClient) {}
+
+  getClientes(): Observable<any[]> {
+    return this.http.get<any[]>(this.baseUrl);
+  }
+
+  crearCliente(cliente: any): Observable<any> {
+    return this.http.post(this.baseUrl, cliente);
+  }
+
+  actualizarCliente(id: string, cliente: any): Observable<any> {
+    return this.http.put(`${this.baseUrl}/${id}`, cliente);
+  }
+
+  eliminarCliente(id: string): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/${id}`);
+  }
+
+  getCliente(id: string): Observable<any> {
+    return this.http.get(`${this.baseUrl}/${id}`);
+  }
+}
+
+
+EL BACK SE INICIA NORMAL
+PS D:\GymFreeWebFinal\gymfree-backend> node index.js
+Conectado a MongoDB Atlas
+Conectado a MongoDB Atlas
+Servidor corriendo en http://0.0.0.0:4000
+Ahora accesible desde tu red interna en tu IP local:4000
+Ahora accesible desde tu red interna en tu IP local:4000
+
+//PERO EL FRONT SE INICIA CON UNA MODIfICACION INDICANDO QUE EL HOST ACEPTA CUALQUIER DISPOSITIVO DE RED LOCAL
+
+PS D:\GymFreeWebFinal> cd gymfree-frontend
+PS D:\GymFreeWebFinal\gymfree-frontend> ng serve --host 0.0.0.0 ///<--- IMPORTANTE ESTA DIRECCION
+

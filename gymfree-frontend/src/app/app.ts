@@ -19,6 +19,7 @@ declare const M: any;
           <li><a routerLink="/planes">Planes</a></li>
           <li><a routerLink="/contacto">Contacto</a></li>
           <li><a routerLink="/clientes">Inscripcion</a></li>
+           <li><a routerLink="/mensajes">mensajes de clientes</a></li>
         </ul>
       </div>
     </nav>
@@ -29,6 +30,8 @@ declare const M: any;
       <li><a routerLink="/planes">Planes</a></li>
       <li><a routerLink="/contacto">Contacto</a></li>
       <li><a routerLink="/clientes">Inscripcion</a></li>
+       <li><a routerLink="/mensajes">mensajes de clientes</a></li>
+
     </ul>
 
     <router-outlet></router-outlet>

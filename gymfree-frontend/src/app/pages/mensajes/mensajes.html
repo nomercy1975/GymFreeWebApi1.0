@@ -5,6 +5,8 @@
       <strong>{{ m.nombre }}</strong> ({{ m.correo }})<br />
       {{ m.mensaje }}<br />
       <small>{{ m.fecha | date:'short' }}</small>
+      <button class="btn red darken-1" style="margin-top: 20px;" (click)="borrar(m._id)">Borrar</button><!-- boton borrar -->
+
     </li>
   </ul>
 </div>
