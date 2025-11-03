@@ -1,20 +1,21 @@
+
 <div class="container">
-  <h4>Contacto</h4>
-  <form>
+  <h4>Contáctanos</h4>
+  <form (ngSubmit)="enviar()">
     <div class="input-field">
-      <input type="text" name="nombre" id="nombre" />
-      <label for="nombre">Nombre</label>
+      <input [(ngModel)]="nombre" name="nombre" required />
+      <label>Nombre</label>
     </div>
     <div class="input-field">
-      <input type="email" name="correo" id="correo" />
-      <label for="correo">Correo</label>
+      <input [(ngModel)]="correo" name="correo" required type="email" />
+      <label>Correo</label>
     </div>
     <div class="input-field">
-      <textarea class="materialize-textarea" name="mensaje" id="mensaje"></textarea>
-      <label for="mensaje">Mensaje</label>
+      <textarea [(ngModel)]="mensaje" name="mensaje" class="materialize-textarea" required></textarea>
+      <label>Mensaje</label>
     </div>
-    <button class="btn blue" type="submit">
-      <i class="material-icons left">send</i>Enviar
-    </button>
+    <button class="btn amber darken-2" type="submit">Enviar</button>
   </form>
+
+  <div *ngIf="enviado" class="green-text">¡Mensaje enviado!</div>
 </div>

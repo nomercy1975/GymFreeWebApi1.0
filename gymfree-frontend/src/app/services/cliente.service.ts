@@ -1,11 +1,11 @@
-import { Injectable } from '@angular/core';
+  import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable()
 export class ClienteService {
-  private baseUrl = 'http://localhost:4000/api/clientes';
-
+  private baseUrl = 'http://localhost:4000/api/clientes';// Modificado para red local
+ 
   constructor(private http: HttpClient) {}
 
   getClientes(): Observable<any[]> {

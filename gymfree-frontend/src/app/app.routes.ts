@@ -4,6 +4,8 @@ import { Index } from './pages/index/index';
 import { Clases } from './pages/clases/clases';
 import { Planes } from './pages/planes/planes';
 import { Contacto } from './pages/contacto/contacto';
+import { Mensajes } from './pages/mensajes/mensajes';
+
 
 
 import { ClientesList } from './pages/clientes-list/clientes-list';
@@ -14,7 +16,9 @@ export const routes: Routes = [
   { path: '', component: Index },
   { path: 'clases', component: Clases },
   { path: 'planes', component: Planes },
-  { path: 'contacto', component: Contacto },
+   { path: 'contacto', component: Contacto },
+  { path: 'mensajes', component: Mensajes },
+
 
   { path: 'clientes', component: ClientesList },
   { path: 'clientes/nuevo', component: ClienteNuevo },
