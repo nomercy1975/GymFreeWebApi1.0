@@ -14,7 +14,7 @@ GymFreeWebApi1.0/
 🛠️ Tecnologías utilizadas
 • 	Frontend: Angular, HTML, CSS, TypeScript
 • 	Backend: Node.js, Express, JavaScript
-• 	Base de datos: (no especificado, se recomienda MongoDB o PostgreSQL)
+• 	Base de datos: MongoDB y PostgreSQL
 • 	Control de versiones: Git
 🔧 Instalación y configuración
 Requisitos previos
