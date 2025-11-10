@@ -1,8 +1,8 @@
 <div class="container">
   <h4>Mensajes recibidos</h4>
   <ul class="collection">
-    <li class="collection-item" *ngFor="let m of mensajes">
-      <strong>{{ m.nombre }}</strong> ({{ m.correo }})<br />
+    <li class="collection-item" *ngFor="let m of mensajes"> <!-- lista de mensajes -->
+      <strong>{{ m.nombre }}</strong> ({{ m.correo }})<br /> <!-- nombre y correo -->
       {{ m.mensaje }}<br />
       <small>{{ m.fecha | date:'short' }}</small>
       <button class="btn red darken-1" style="margin-top: 20px;" (click)="borrar(m._id)">Borrar</button><!-- boton borrar -->
@@ -10,3 +10,4 @@
     </li>
   </ul>
 </div>
+<!-- fin lista de mensajes -->

@@ -18,16 +18,6 @@ app.use('/api/mensajes', require('./routes/mensajes'));// Usar las rutas de mens
 
 
 
-
-
-
-
-
-
-
-
-
-
 // Conexión a MongoDB Atlas
 
 mongoose.connect('mongodb+srv://rubenpulido1975_db_user:nomercy1975@sena.dhckkxb.mongodb.net/gymfree?retryWrites=true&w=majority&appName=sena')

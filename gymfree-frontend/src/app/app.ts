@@ -10,10 +10,10 @@ declare const M: any;
     <nav class="blue darken-3">
       <div class="nav-wrapper container">
         <a routerLink="/" class="brand-logo">GymFree</a>
-        <a href="#" data-target="mobile-demo" class="sidenav-trigger">
+        <a href="index.html" data-target="mobile-demo" class="sidenav-trigger">
           <i class="material-icons">menu</i>
         </a>
-        <ul class="right hide-on-med-and-down">
+        <ul class="right hide-on-med-and-down"><!--  Menu de escritorio -->
           <li><a routerLink="/">Inicio</a></li>
           <li><a routerLink="/clases">Clases</a></li>
           <li><a routerLink="/planes">Planes</a></li>
@@ -24,7 +24,7 @@ declare const M: any;
       </div>
     </nav>
 
-    <ul class="sidenav" id="mobile-demo">
+    <ul class="sidenav" id="mobile-demo"> <!--  Menu para celular responsive -->
       <li><a routerLink="/">Inicio</a></li>
       <li><a routerLink="/clases">Clases</a></li>
       <li><a routerLink="/planes">Planes</a></li>
@@ -39,7 +39,7 @@ declare const M: any;
 })
 export class App implements AfterViewInit {
   ngAfterViewInit() {
-    const elems = document.querySelectorAll('.sidenav');
+    const elems = document.querySelectorAll('.sidenav'); // Inicializa el menu responsive ojo con tocarlo
     M.Sidenav.init(elems);
   }
 }
